@@ -1,4 +1,4 @@
-# CancelPlayerExhaust
+# PMPluEncrypter
 ### This is PocketMine-MP Plugin Encrypter
 
 ````
