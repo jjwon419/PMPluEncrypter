@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31112.23
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMPluEncrypter", "PMPluEncrypter\PMPluEncrypter.csproj", "{FDC5A841-2682-49E9-BF93-B1C621A98370}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FDC5A841-2682-49E9-BF93-B1C621A98370}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDC5A841-2682-49E9-BF93-B1C621A98370}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDC5A841-2682-49E9-BF93-B1C621A98370}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDC5A841-2682-49E9-BF93-B1C621A98370}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2EF67FBC-2DB2-4138-8C9F-33605D5ADADB}
+	EndGlobalSection
+EndGlobal
