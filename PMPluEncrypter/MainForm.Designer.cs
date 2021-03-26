@@ -33,12 +33,12 @@ namespace PMPluEncrypter
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            this.FolderInput = new System.Windows.Forms.ComboBox();
             this.FolderInputDescription = new System.Windows.Forms.Label();
             this.countBox = new System.Windows.Forms.ComboBox();
+            this.CountDescription = new System.Windows.Forms.Label();
             this.submit = new System.Windows.Forms.Button();
             this.log = new System.Windows.Forms.RichTextBox();
-            this.CountDescription = new System.Windows.Forms.Label();
-            this.FolderInput = new System.Windows.Forms.ComboBox();
             this.MaximizeBox = false;
             this.SuspendLayout();
 
@@ -234,12 +234,11 @@ namespace PMPluEncrypter
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(849, 399);
             this.Controls.Add(this.FolderInput);
-            this.Controls.Add(this.CountDescription);
-            this.Controls.Add(this.countBox);
-            this.Controls.Add(this.log);
             this.Controls.Add(this.FolderInputDescription);
-            this.Controls.Add(this.FolderInput);
+            this.Controls.Add(this.countBox);
+            this.Controls.Add(this.CountDescription);
             this.Controls.Add(this.submit);
+            this.Controls.Add(this.log);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
