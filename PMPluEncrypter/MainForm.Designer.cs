@@ -33,7 +33,6 @@ namespace PMPluEncrypter
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.FolderInput = new System.Windows.Forms.TextBox();
             this.FolderInputDescription = new System.Windows.Forms.Label();
             this.countBox = new System.Windows.Forms.ComboBox();
             this.submit = new System.Windows.Forms.Button();
@@ -254,7 +253,6 @@ namespace PMPluEncrypter
         #endregion
 
         private System.Windows.Forms.Button submit;
-        private System.Windows.Forms.TextBox FolderInput;
         private System.Windows.Forms.Label FolderInputDescription;
         private ComboBox countBox;
         private System.Windows.Forms.RichTextBox log;
