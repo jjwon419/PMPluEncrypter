@@ -39,6 +39,7 @@ namespace PMPluEncrypter
             this.log = new System.Windows.Forms.RichTextBox();
             this.CountDescription = new System.Windows.Forms.Label();
             this.FolderInput = new System.Windows.Forms.ComboBox();
+            this.MaximizeBox = false;
             this.SuspendLayout();
 
             // 
