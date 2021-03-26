@@ -1,4 +1,5 @@
 ﻿
+using System.IO;
 using System.Windows.Forms;
 
 namespace PMPluEncrypter
@@ -32,23 +33,34 @@ namespace PMPluEncrypter
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.FolderInput = new System.Windows.Forms.TextBox();
             this.FolderInputDescription = new System.Windows.Forms.Label();
             this.countBox = new System.Windows.Forms.ComboBox();
             this.submit = new System.Windows.Forms.Button();
             this.log = new System.Windows.Forms.RichTextBox();
             this.CountDescription = new System.Windows.Forms.Label();
-            this.MaximizeBox = false;
+            this.FolderInput = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
-
             // 
             // FolderInput
             // 
+            this.FolderInput.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
             this.FolderInput.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.FolderInput.FormattingEnabled = true;
             this.FolderInput.Location = new System.Drawing.Point(33, 56);
             this.FolderInput.Name = "FolderInput";
-            this.FolderInput.Size = new System.Drawing.Size(466, 29);
-            this.FolderInput.TabIndex = 1;
+            this.FolderInput.Size = new System.Drawing.Size(466, 45);
+            this.FolderInput.TabIndex = 6;
+
+            DirectoryInfo sourcesFolder = new DirectoryInfo("./sources");
+
+            if (sourcesFolder.Exists)
+            {
+                foreach(DirectoryInfo folder in sourcesFolder.GetDirectories())
+                {
+                    this.FolderInput.Items.Add(folder.Name);
+                }
+            }
+            
             // 
             // FolderInputDescription
             // 
@@ -166,6 +178,7 @@ namespace PMPluEncrypter
             "98",
             "99",
             "100"});*/
+
             int count;
 
             for(count = 1; count < 101; count++)
@@ -173,11 +186,11 @@ namespace PMPluEncrypter
                 this.countBox.Items.Add(count + "번");
             }
 
-            this.countBox.SelectedIndex = 0;
             this.countBox.Location = new System.Drawing.Point(505, 56);
             this.countBox.Name = "countBox";
             this.countBox.Size = new System.Drawing.Size(85, 29);
             this.countBox.TabIndex = 4;
+            this.countBox.SelectedIndex = 0;
             // 
             // CountDescription
             // 
@@ -217,14 +230,15 @@ namespace PMPluEncrypter
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(849, 399);
+            this.Controls.Add(this.FolderInput);
             this.Controls.Add(this.CountDescription);
             this.Controls.Add(this.countBox);
             this.Controls.Add(this.log);
             this.Controls.Add(this.FolderInputDescription);
-            this.Controls.Add(this.FolderInput);
             this.Controls.Add(this.submit);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Text = "PMMP 플러그인 암호화 툴";
             this.Load += new System.EventHandler(this.Main_Form_Load);
@@ -236,11 +250,11 @@ namespace PMPluEncrypter
         #endregion
 
         private System.Windows.Forms.Button submit;
-        private System.Windows.Forms.TextBox FolderInput;
         private System.Windows.Forms.Label FolderInputDescription;
         private ComboBox countBox;
         private System.Windows.Forms.RichTextBox log;
         private Label CountDescription;
+        private ComboBox FolderInput;
     }
 }
 
