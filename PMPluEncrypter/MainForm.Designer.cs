@@ -33,6 +33,7 @@ namespace PMPluEncrypter
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            this.FolderInput = new System.Windows.Forms.TextBox();
             this.FolderInputDescription = new System.Windows.Forms.Label();
             this.countBox = new System.Windows.Forms.ComboBox();
             this.submit = new System.Windows.Forms.Button();
@@ -40,6 +41,7 @@ namespace PMPluEncrypter
             this.CountDescription = new System.Windows.Forms.Label();
             this.FolderInput = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
+
             // 
             // FolderInput
             // 
@@ -186,6 +188,7 @@ namespace PMPluEncrypter
                 this.countBox.Items.Add(count + "번");
             }
 
+            this.countBox.SelectedIndex = 0;
             this.countBox.Location = new System.Drawing.Point(505, 56);
             this.countBox.Name = "countBox";
             this.countBox.Size = new System.Drawing.Size(85, 29);
@@ -235,6 +238,7 @@ namespace PMPluEncrypter
             this.Controls.Add(this.countBox);
             this.Controls.Add(this.log);
             this.Controls.Add(this.FolderInputDescription);
+            this.Controls.Add(this.FolderInput);
             this.Controls.Add(this.submit);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -250,6 +254,7 @@ namespace PMPluEncrypter
         #endregion
 
         private System.Windows.Forms.Button submit;
+        private System.Windows.Forms.TextBox FolderInput;
         private System.Windows.Forms.Label FolderInputDescription;
         private ComboBox countBox;
         private System.Windows.Forms.RichTextBox log;
