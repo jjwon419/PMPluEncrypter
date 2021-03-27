@@ -49,10 +49,51 @@ namespace PMPluEncrypter
                 MessageBox.Show("존재하지 않는 폴더입니다\nsources폴더를 확인하세요", "알림");
                 return;
             }
+
             printLog(folderInfo.Name + "폴더 여는중...");
 
-
+            this.encrypt(folderName + "/", encryptCount);
         }
+
+        private void encrypt(String FolderPath, int encryptCount)
+        {
+            int encryptCountFor = encryptCount + 1;
+
+            DirectoryInfo folderInfo = new DirectoryInfo(FolderPath);
+            DirectoryInfo completeDirectory = new DirectoryInfo(FolderPath.Replace("./sources/", "./encrypted/"));
+            if (!completeDirectory.Exists)
+            {
+                completeDirectory.Create();
+            }
+
+            foreach(FileInfo file in folderInfo.GetFiles())
+            {
+                if(file.Extension == ".php")
+                {
+                    String code = file.OpenText().ReadToEnd().Replace("<?php", "").Replace("?>", "");
+
+                    int count;
+                    for(count = 1; count < encryptCountFor; count++)
+                    {
+                        code = "eval(base64_decode(\"" + Convert.ToBase64String(Encoding.UTF8.GetBytes(code)) + "\"));";
+                        printLog(FolderPath + file.Name + "파일 " + count + "번째 암호화중");
+                    }
+                    
+                    File.WriteAllText(FolderPath.Replace("./sources/", "./encrypted/") + file.Name, "<?php\n" + code);
+
+                }
+                else
+                {
+                    File.Copy(FolderPath + file.Name, FolderPath.Replace("./sources/", "./encrypted/") + file.Name);
+                }
+            }
+            foreach(DirectoryInfo directory in folderInfo.GetDirectories())
+            {
+                this.encrypt(FolderPath + directory.Name + "/", encryptCount);
+            }
+        }
+
+
 
         private void printLog(String str)
         {
