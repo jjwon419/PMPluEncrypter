@@ -32,7 +32,6 @@ namespace PMPluEncrypter
             printLog("");
             printLog("프로그램이 정상 실행 되었습니다");
             printLog("sources에 플러그인 소스폴더를 넣으세요");
-            printLog("프로그램 실행 전 sources폴더에 들어간 소스폴더들은 자동완성을 지원합니다");
         }
 
         private void button_Click(object sender, EventArgs e)
@@ -109,12 +108,25 @@ namespace PMPluEncrypter
             }
         }
 
-
-
         private void printLog(String str)
         {
             log.AppendText("\n" + str);
             log.ScrollToCaret();
+        }
+
+        public void refreshFolderList(object sender, EventArgs e)
+        {
+            FolderInput.Items.Clear();
+
+            DirectoryInfo sourcesFolder = new DirectoryInfo("./sources");
+
+            if (sourcesFolder.Exists)
+            {
+                foreach (DirectoryInfo folder in sourcesFolder.GetDirectories())
+                {
+                    FolderInput.Items.Add(folder.Name);
+                }
+            }
         }
     }
 }

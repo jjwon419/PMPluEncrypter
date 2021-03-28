@@ -52,16 +52,7 @@ namespace PMPluEncrypter
             this.FolderInput.Name = "FolderInput";
             this.FolderInput.Size = new System.Drawing.Size(466, 45);
             this.FolderInput.TabIndex = 6;
-
-            DirectoryInfo sourcesFolder = new DirectoryInfo("./sources");
-
-            if (sourcesFolder.Exists)
-            {
-                foreach(DirectoryInfo folder in sourcesFolder.GetDirectories())
-                {
-                    this.FolderInput.Items.Add(folder.Name);
-                }
-            }
+            this.FolderInput.Click += new System.EventHandler(this.refreshFolderList);
             
             // 
             // FolderInputDescription
@@ -193,7 +184,6 @@ namespace PMPluEncrypter
             this.countBox.Name = "countBox";
             this.countBox.Size = new System.Drawing.Size(85, 29);
             this.countBox.TabIndex = 4;
-            this.countBox.SelectedIndex = 0;
             // 
             // CountDescription
             // 
