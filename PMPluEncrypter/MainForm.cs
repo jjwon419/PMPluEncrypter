@@ -93,12 +93,23 @@ namespace PMPluEncrypter
                         code = "eval(gzinflate(base64_decode(\"" + Convert.ToBase64String(compressed) + "\")));";
                         printLog(FolderPath + file.Name + "파일 " + count + "번째 암호화중");
                     }
+
+                    FileInfo encryptFile = new FileInfo(FolderPath.Replace("./sources/", "./encrypted/") + file.Name);
+                    if (encryptFile.Exists)
+                    {
+                        encryptFile.Delete();
+                    }
                     
                     File.WriteAllText(FolderPath.Replace("./sources/", "./encrypted/") + file.Name, "<?php\n" + code);
 
                 }
                 else
                 {
+                    FileInfo encryptFile = new FileInfo(FolderPath.Replace("./sources/", "./encrypted/") + file.Name);
+                    if (encryptFile.Exists)
+                    {
+                        encryptFile.Delete();
+                    }
                     File.Copy(FolderPath + file.Name, FolderPath.Replace("./sources/", "./encrypted/") + file.Name);
                 }
             }

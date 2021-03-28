@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,6 +15,18 @@ namespace PMPluEncrypter
         [STAThread]
         static void Main()
         {
+            DirectoryInfo sourcesFolder = new DirectoryInfo("./sources/");
+            if (!sourcesFolder.Exists)
+            {
+                sourcesFolder.Create();
+            }
+
+            DirectoryInfo encryptedFolder = new DirectoryInfo("./encrypted/");
+            if (!encryptedFolder.Exists)
+            {
+                encryptedFolder.Create();
+            }
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());
