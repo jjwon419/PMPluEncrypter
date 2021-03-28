@@ -31,6 +31,8 @@ namespace PMPluEncrypter
             printLog("                                   |______|                                                ");
             printLog("");
             printLog("프로그램이 정상 실행 되었습니다");
+            printLog("sources에 플러그인 소스폴더를 넣으세요");
+            printLog("프로그램 실행 전 sources폴더에 들어간 소스폴더들은 자동완성을 지원합니다");
         }
 
         private void button_Click(object sender, EventArgs e)
@@ -54,6 +56,9 @@ namespace PMPluEncrypter
             printLog(folderInfo.Name + "폴더 여는중...");
 
             this.encrypt(folderName + "/", encryptCount);
+            printLog("");
+            printLog("암호화가 완료되었습니다");
+            printLog("encrypted 폴더에서 확인하세요.");
         }
 
         private void encrypt(String FolderPath, int encryptCount)
