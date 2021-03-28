@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.IO.Compression;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -75,7 +76,17 @@ namespace PMPluEncrypter
                     int count;
                     for(count = 1; count < encryptCountFor; count++)
                     {
-                        code = "eval(base64_decode(\"" + Convert.ToBase64String(Encoding.UTF8.GetBytes(code)) + "\"));";
+                        byte[] buffer = UTF8Encoding.UTF8.GetBytes(code);
+                        MemoryStream rawDataStream = new MemoryStream();
+                        DeflateStream gzipOut = new DeflateStream(rawDataStream, CompressionMode.Compress);
+
+                        gzipOut.Write(buffer, 0, buffer.Length);
+                        gzipOut.Close();
+
+                        byte[] compressed = rawDataStream.ToArray();
+              
+
+                        code = "eval(gzinflate(base64_decode(\"" + Convert.ToBase64String(compressed) + "\")));";
                         printLog(FolderPath + file.Name + "파일 " + count + "번째 암호화중");
                     }
                     
